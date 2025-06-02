@@ -1,4 +1,4 @@
-import "./app.css";
+import "./App.css";
 import TodoManagementScreen from "./screens/todo-management";
 
 function App() {

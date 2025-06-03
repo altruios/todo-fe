@@ -1,16 +1,11 @@
 import * as React from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoList from "../components/todo-list";
-// import todoService from "../services/todos";
-// import subtaskService from "../services/subtasks";
 
 function TodoManagementScreen() {
   const [title, setTitle] = React.useState("");
   const [todos, setTodos] = React.useState([]);
 
-  // React.useEffect(() => {
-  //   todoService.getAll().then((todos) => setTodos(todos));
-  // }, []);
 
   function handleTodoTitle(event) {
     setTitle(event.target.value);
@@ -134,7 +129,7 @@ function removeSubTask(id,subtask){
   return (
     <>
     <div className="task-manager header">
-      <h1>Task Manager</h1>
+      <h1>TO DO:</h1>
       <form onSubmit={submitTodo}>
         <input
           placeholder="Enter Todo..."

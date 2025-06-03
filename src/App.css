@@ -1,1 +1,91 @@
 
+.body{
+    height:80%;
+}
+.subtask-list-item{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    margin:2px;
+}
+.subtask-list{
+    display:flex;
+    flex-flow:column nowrap;
+    height:fit-content;
+        font-size:1.5vh;
+
+}
+.hold{
+    display:flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    width:90%;
+
+}
+.checkboxholder input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkboxholder{
+    height: 100%;
+    padding-inline:10px;
+}
+.btn-holder{
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content: space-between;
+    
+}
+.btn-holder button{
+    margin-block:2px;
+}
+.todo-list-item{
+    border:solid grey;
+    border-radius: 30px;
+    display:flex;
+    flex-flow:row nowrap;
+    margin-block:10px;
+    padding-inline: 10px;
+    margin-inline:auto;
+    justify-self: center;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    font-size:5vh;
+    height:100%;
+
+}
+.todo-list{
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: center;
+
+}
+.task-manager{
+    border:solid grey;
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: center;
+    margin:auto;
+    height: 10%;
+
+}
+.done{
+    background:rgba(0,255,0,0.5);
+}
+.done-text{
+
+    text-decoration-line: line-through !important;
+}
+.btn{
+    background:rgba(240,240,240,1);
+}
+
+.btn:focus {
+    background:rgba(21  0,210,050,1);
+}   

@@ -9,6 +9,8 @@ function TodoList({
   submitSubtask,
   toggleSubtask,
   defaultIndexes,
+  removeTodo,
+  removeSubTask
 }) {
   const [indices, setIndices] = React.useState([0]);
   function toggleItem(toggledIndex) {
@@ -24,7 +26,7 @@ function TodoList({
   React.useEffect(() => setIndices(defaultIndexes), [defaultIndexes]);
 
   return (
-    <Accordion index={indices} onChange={toggleItem}>
+    <Accordion index={indices} onChange={toggleItem} className="todo-list">
       {todos.map((todo) => (
         <TodoListItem
           key={todo.id}
@@ -32,6 +34,8 @@ function TodoList({
           toggleTodoStatus={toggleTodoStatus}
           submitSubtask={submitSubtask}
           toggleSubtask={toggleSubtask}
+          removeSubTask={removeSubTask}
+          removeTodo={removeTodo}
         />
       ))}
     </Accordion>

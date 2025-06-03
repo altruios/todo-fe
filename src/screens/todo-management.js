@@ -27,6 +27,9 @@ function TodoManagementScreen() {
       { title, status: "pending", subtasks: [], id: uuidv4() },
     ]);
     setTitle("");
+    console.log("event.target",event.target)
+    const todoInput=document.getElementById("todoInput");
+    todoInput.focus();
   }
 
   function calculateStatusChanges(todo) {
@@ -57,7 +60,28 @@ function TodoManagementScreen() {
       })
     );
   }
+function removeTodo(id){
+  setTodos(todos.filter((todo) => todo.id !== id));
+}
+function removeSubTask(id,subtask){
+    console.log(id,"todo id");
+    setTodos(
+        (todos)=>{
 
+            return todos?.map((todo) => {
+                console.log(todo);
+                if (todo.id === id) {
+                    return {
+                        ...todo,
+                        status: "pending",
+                        subtasks: todo.subtasks?.filter((s) => subtask !== s),
+                    };
+                } else return todo;
+            })
+            
+        })
+
+}
   function submitSubtask(event, todoId) {
     event.preventDefault();
     const subtask = {
@@ -78,6 +102,8 @@ function TodoManagementScreen() {
     );
 
     event.target[`${todoId}-subtask-input`].value = "";
+        event.target[`${todoId}-subtask-input`].focus();
+
   }
 
   function toggleSubtask(subtaskId, todoId) {
@@ -106,7 +132,8 @@ function TodoManagementScreen() {
     );
   }
   return (
-    <div>
+    <>
+    <div className="task-manager header">
       <h1>Task Manager</h1>
       <form onSubmit={submitTodo}>
         <input
@@ -114,19 +141,24 @@ function TodoManagementScreen() {
           id="todoInput"
           value={title}
           onChange={handleTodoTitle}
-        ></input>
-        <button onClick={submitTodo} type="submit">
+          ></input>
+        <button onClick={submitTodo} type="submit" className="btn">
           Add Todo
         </button>
       </form>
+      </div>
+      <div className="body">
       <TodoList
         defaultIndexes={[...Array(todos.length).keys()]}
         todos={todos}
         toggleTodoStatus={toggleTodoStatus}
         submitSubtask={submitSubtask}
         toggleSubtask={toggleSubtask}
-      ></TodoList>
+        removeTodo={removeTodo}
+        removeSubTask={removeSubTask}
+        ></TodoList>
     </div>
+        </>
   );
 }
 

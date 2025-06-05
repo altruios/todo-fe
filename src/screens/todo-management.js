@@ -1,12 +1,19 @@
 import * as React from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoList from "../components/todo-list";
+import { useEffect } from "react";
 
 function TodoManagementScreen() {
   const [title, setTitle] = React.useState("");
-  const [todos, setTodos] = React.useState([]);
-
-
+  const [todos, setTodos] = React.useState(()=>{
+    const data = localStorage.getItem('todo-fe')||'[]';
+    console.log("data",data);
+    const _todos= JSON.parse(data);
+    return _todos
+  });
+  useEffect(()=>{
+    localStorage.setItem("todo-fe",JSON.stringify(todos));
+  },[todos])
   function handleTodoTitle(event) {
     setTitle(event.target.value);
   }
@@ -141,6 +148,7 @@ function removeSubTask(id,subtask){
           Add Todo
         </button>
       </form>
+ 
       </div>
       <div className="body">
       <TodoList
